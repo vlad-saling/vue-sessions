@@ -21,9 +21,18 @@ const app = new Vue({
 
 ### Dynamic binding (and lazy)
 
+on change update:
 ```HTML
 <div id="app">
   <input v-model="introductionText" type=text>
+  {{ introductionText }}
+</div>
+```
+
+on input update - lazy:
+```HTML
+<div id="app">
+  <input v-model.lazy="introductionText" type=text>
   {{ introductionText }}
 </div>
 ```
@@ -62,6 +71,7 @@ const app = new Vue({
 
 ### Scope
 
+manual scope:
 ```JS
 const app = new Vue({
   el: '#app',
@@ -79,6 +89,7 @@ const app = new Vue({
 })
 ```
 
+scope trough arrow:
 ```JS
 const app = new Vue({
   el: '#app',
@@ -96,6 +107,8 @@ const app = new Vue({
 ```
 
 ## Computed properties
+
+For properties that doesn't have to store in data model. Much like Excel operations on top of table.
 
 ```HTML
 <div id="app">
@@ -123,6 +136,8 @@ const app = new Vue({
 ```
 
 ## Filters
+
+Usefull in combination with number or string adjustments.
 
 ```HTML
 <div id="app">
@@ -155,7 +170,7 @@ const app = new Vue({
 ```
 
 
-## Template directives (if-else, for)
+## Template directives
 
 ### Lists
 
@@ -190,6 +205,8 @@ const app = new Vue({
 Array caveats: https://vuejs.org/v2/guide/list.html#Caveats
 
 ### Conditional rendering
+
+Be aware of too complex logic in tempaltes. It gets messy. 
 
 ```HTML
 <div id="app">
@@ -293,6 +310,8 @@ Proper render function: https://vuejs.org/v2/guide/render-function.html
 
 
 ## Mixins
+
+DRY helpers.
 
 ```HTML
 <div id="app">
