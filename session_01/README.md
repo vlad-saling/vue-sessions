@@ -286,7 +286,7 @@ Proper render function: https://vuejs.org/v2/guide/render-function.html
 ```
 
 ```JS
-var greeting = {
+const greeting = {
   data: {
     location: 'mixin'
   },
