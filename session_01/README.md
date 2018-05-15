@@ -17,7 +17,7 @@ const app = new Vue({
 })
 ```
 
-### Dynamic binding
+### Dynamic binding (and lazy)
 
 ```HTML
 <div id="app">
