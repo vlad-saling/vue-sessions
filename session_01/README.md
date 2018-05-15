@@ -1,6 +1,8 @@
 # Vue 01: Basic building blocks
 
-## Data binding
+## Data rendering and binding
+
+### Rendering static data
 
 ```HTML
 <div id="app">
