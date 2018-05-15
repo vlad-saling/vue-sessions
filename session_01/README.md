@@ -295,7 +295,7 @@ const greeting = {
   },
   methods: {
     hello: function () {
-      console.log('Hello from ' + this.location + .'')
+      console.log('Hello from ' + this.location + '.')
     }
   }
 }
