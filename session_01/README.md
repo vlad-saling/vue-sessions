@@ -17,7 +17,7 @@ const app = new Vue({
 })
 ```
 
-## Methods
+## Methods (and scope)
 
 ```HTML
 <div id="app">
@@ -40,12 +40,74 @@ const app = new Vue({
 })
 ```
 
+### Scope
 
-## Reactivity (and limits)
+```JS
+const app = new Vue({
+  el: '#app',
+  data: {
+    introductionText: 'Hello everybody!'
+  },
+  methods: {
+    myMethod: function() {
+      let vm = this
+      setTimeout(function() {
+        vm.introductionText = 'Hi there!'
+      }, 2000)
+    }
+  }
+})
+```
 
-## Computed properties
+```JS
+const app = new Vue({
+  el: '#app',
+  data: {
+    introductionText: 'Hello everybody!'
+  },
+  methods: {
+    myMethod: function() {
+      setTimeout(() => {
+        this.introductionText = 'Hi there!'
+      }, 2000)
+    }
+  }
+})
+```
 
 ## Template directives (if-else, for)
+
+### Lists
+
+```HTML
+<div id="app">
+  <button v-on:click=myMethod>Change text</button>
+  {{ introductionText }} 
+  
+  <ul v-for="color in colors">
+    <li>{{ color }}</li>
+  </ul>
+</div>
+```
+```JS
+const app = new Vue({
+  el: '#app',
+  data: {
+    introductionText: 'Hello everybody!',
+    colors: ['blue', 'green', 'yellow']
+  },
+  methods: {
+    myMethod: function() {
+      this.introductionText = 'Hi there!'
+    }
+  }
+})
+```
+
+
+## Reactivity limits
+
+## Computed properties
 
 ## Filters
 
