@@ -1,6 +1,6 @@
 # Vue 01: Basic building blocks
 
-## Hello world
+## Data binding
 
 ```HTML
 <div id="app">
@@ -75,6 +75,66 @@ const app = new Vue({
 })
 ```
 
+## Computed properties
+
+```HTML
+<div id="app">
+  Bitcoin: <input type="number" v-model="bitcoin"><br />
+  USD: {{ btcUSD }}<br />
+  EUR: {{ btcEUR }} 
+</div>
+```
+
+```JS
+const app = new Vue({
+  el: '#app',
+  data: {
+    bitcoin: 0
+  },
+  computed: {
+    btcUSD: function(color) {
+      return this.bitcoin * 8812.67
+    },
+    btcEUR: function(color) {
+      return this.bitcoin * 7382.67
+    },
+  },
+})
+```
+
+## Filters
+
+```HTML
+<div id="app">
+  Bitcoin: <input type="number" v-model="bitcoin"><br />
+  USD: {{ btcUSD | round }}<br />
+  EUR: {{ btcEUR | round }} 
+</div>
+```
+
+```JS
+const app = new Vue({
+  el: '#app',
+  data: {
+    bitcoin: 0
+  },
+  computed: {
+    btcUSD: function(color) {
+      return this.bitcoin * 8812.67
+    },
+    btcEUR: function(color) {
+      return this.bitcoin * 7382.67
+    },
+  },
+  filters: {
+    round: function(value) {
+      return Number(value).toFixed(1)
+    }
+  }
+})
+```
+
+
 ## Template directives (if-else, for)
 
 ### Lists
@@ -136,6 +196,8 @@ const app = new Vue({
 })
 ```
 
+Custom directives: https://vuejs.org/v2/guide/custom-directive.html
+
 ### Somewhat cleaner conditonal rendering
 
 ```HTML
@@ -167,68 +229,99 @@ const app = new Vue({
 })
 ```
 
-Proper render function: https://vuejs.org/v2/guide/render-function.html
-
-
-## Computed properties
+### The component way
 
 ```HTML
 <div id="app">
-  Bitcoin: <input type="number" v-model="bitcoin"><br />
-  USD: {{ btcUSD }}<br />
-  EUR: {{ btcEUR }} 
+  <input v-model="newColor" type="text">
+  <button v-on:click="addColor">Add color</button>
+  
+  <ul>
+    <color-item v-for="color in colors" v-bind:color="color"></color-item>
+  </ul>
 </div>
 ```
 
 ```JS
-const app = new Vue({
-  el: '#app',
-  data: {
-    bitcoin: 0
+Vue.component('color-item', {
+  props: {
+    color: ''
   },
-  computed: {
-    btcUSD: function(color) {
-      return this.bitcoin * 8812.67
-    },
-    btcEUR: function(color) {
-      return this.bitcoin * 7382.67
-    },
-  },
+  template: '<li><span v-bind:style="{color: color }">{{ color }}</span></li>'
 })
-```
 
-## Filters
-
-```HTML
-<div id="app">
-  Bitcoin: <input type="number" v-model="bitcoin"><br />
-  USD: {{ btcUSD | round }}<br />
-  EUR: {{ btcEUR | round }} 
-</div>
-```
-
-```JS
 const app = new Vue({
   el: '#app',
   data: {
-    bitcoin: 0
+    newColor: '',
+    colors: ['blue', 'green', 'red']
   },
-  computed: {
-    btcUSD: function(color) {
-      return this.bitcoin * 8812.67
+  methods: {
+    addColor: function() {
+      this.colors.push(this.newColor)
     },
-    btcEUR: function(color) {
-      return this.bitcoin * 7382.67
-    },
-  },
-  filters: {
-    round: function(value) {
-      return Number(value).toFixed(1)
-    }
   }
 })
 ```
 
+
+Proper render function: https://vuejs.org/v2/guide/render-function.html
+
+
 ## Mixins
 
-## Components
+```HTML
+<div id="app">
+  <input v-model="newColor" type="text">
+  <button v-on:click="addColor">Add color</button>
+  
+  <ul>
+    <color-item v-for="color in colors" v-bind:color="color"></color-item>
+  </ul>
+</div>
+```
+
+```JS
+var greeting = {
+  data: {
+    location: 'mixin'
+  },
+  created: function () {
+    this.hello()
+  },
+  methods: {
+    hello: function () {
+      console.log('Hello from ' + this.location + .'')
+    }
+  }
+}
+
+Vue.component('color-item', {
+  mixins: [greeting],
+  data: function () {
+    return { 
+      location: 'component'
+    }
+  },
+  props: {
+    color: ''
+  },
+  
+  template: '<li><span v-bind:style="{color: color }">{{ color }}</span></li>'
+})
+
+const app = new Vue({
+  el: '#app',
+  mixins: [greeting],
+  data: {
+    newColor: '',
+    colors: ['blue', 'green', 'red'],
+    location: 'main'
+  },
+  methods: {
+    addColor: function() {
+      this.colors.push(this.newColor)
+    },
+  }
+})
+```
