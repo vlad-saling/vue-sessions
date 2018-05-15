@@ -159,7 +159,9 @@ const app = new Vue({
   },
   methods: {
     addColor: function() {
-      this.colors.push(this.newColor)
+      if (this.newColor != "") {
+         this.colors.push(this.newColor)
+      }
     }
   }
 })
