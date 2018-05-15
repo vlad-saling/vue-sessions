@@ -167,10 +167,67 @@ const app = new Vue({
 })
 ```
 
+Proper render function: https://vuejs.org/v2/guide/render-function.html
+
 
 ## Computed properties
 
+```HTML
+<div id="app">
+  Bitcoin: <input type="number" v-model="bitcoin"><br />
+  USD: {{ btcUSD }}<br />
+  EUR: {{ btcEUR }} 
+</div>
+```
+
+```JS
+const app = new Vue({
+  el: '#app',
+  data: {
+    bitcoin: 0
+  },
+  computed: {
+    btcUSD: function(color) {
+      return this.bitcoin * 8812.67
+    },
+    btcEUR: function(color) {
+      return this.bitcoin * 7382.67
+    },
+  },
+})
+```
+
 ## Filters
+
+```HTML
+<div id="app">
+  Bitcoin: <input type="number" v-model="bitcoin"><br />
+  USD: {{ btcUSD | round }}<br />
+  EUR: {{ btcEUR | round }} 
+</div>
+```
+
+```JS
+const app = new Vue({
+  el: '#app',
+  data: {
+    bitcoin: 0
+  },
+  computed: {
+    btcUSD: function(color) {
+      return this.bitcoin * 8812.67
+    },
+    btcEUR: function(color) {
+      return this.bitcoin * 7382.67
+    },
+  },
+  filters: {
+    round: function(value) {
+      return Number(value).toFixed(1)
+    }
+  }
+})
+```
 
 ## Mixins
 
