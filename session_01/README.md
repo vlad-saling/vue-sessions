@@ -17,6 +17,24 @@ const app = new Vue({
 })
 ```
 
+### Dynamic binding
+
+```HTML
+<div id="app">
+  <input v-model="introductionText" type=text>
+  {{ introductionText }}
+</div>
+```
+
+```JS
+const app = new Vue({
+  el: '#app',
+  data: {
+    introductionText: 'Hello everybody!'
+  }
+})
+```
+
 ## Methods (and scope)
 
 ```HTML
