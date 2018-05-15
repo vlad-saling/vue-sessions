@@ -144,8 +144,8 @@ const app = new Vue({
   <input v-model="newColor" type="text">
   <button v-on:click="addColor">Add color</button>
   
-  <ul v-for="color in colors">
-    <li>{{ color }}</li>
+  <ul>
+    <li v-for="color in colors">{{ color }}</li>
   </ul>
 </div>
 ```
