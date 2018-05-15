@@ -108,7 +108,7 @@ const app = new Vue({
 
 ## Computed properties
 
-For properties that doesn't have to store in data model. Much like Excel operations on top of table.
+For properties that doesn't have to be store in data model. Much like Excel operations on top of table.
 
 ```HTML
 <div id="app">
