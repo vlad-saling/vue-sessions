@@ -92,10 +92,10 @@ const app = new Vue({
     bitcoin: 0
   },
   computed: {
-    btcUSD: function(color) {
+    btcUSD: function() {
       return this.bitcoin * 8812.67
     },
-    btcEUR: function(color) {
+    btcEUR: function() {
       return this.bitcoin * 7382.67
     },
   },
