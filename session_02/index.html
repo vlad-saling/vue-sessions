@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Hello Vuex</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div id="app">
+
+        <input v-model="newColor" type="text">
+        <button v-on:click="addColor">add color</button>
+        
+        <ul>
+            <color-item v-for="color in colors" v-bind:color="color" v-bind:key="color.id"></color-item>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@2.0.0"></script>
+    <script src="vue.js"></script>
+
+  </body>
+
+</html>
