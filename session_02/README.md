@@ -184,3 +184,52 @@ const app = new Vue({
 ```
 
 ## Actions
+
+```JS
+const store = new Vuex.Store({
+  state: {
+    colors: ['blue', 'green', 'red']
+  },
+  getters: {
+    colors: state => {
+      return state.colors
+    }
+  },
+  mutations: {
+    addColor: function(state, payload) {
+      state.colors.push(payload.color)
+    }
+  },
+  actions: {
+    addColor: function(context, color) {
+      context.commit(color)
+    }
+  }
+})
+```
+
+```JS
+const app = new Vue({
+  el: '#app',
+  store,
+  data: {
+    newColor: ''
+  },
+  computed: {
+    colors: function() {
+      return this.$store.getters.colors
+    }
+  },
+  methods: {
+     addColor: function() {
+      if (this.newColor != "") {
+         store.dispatch({
+           type: 'addColor',
+           color: this.newColor
+         })
+      }
+    },
+  }
+})
+```
+
