@@ -297,7 +297,9 @@ const app = new Vue({
 
 ## Module
 
-```const moduleState = {
+```JS
+
+const moduleState = {
   state: {
     colors: ['blue', 'green', 'red']
   },
