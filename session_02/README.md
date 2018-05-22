@@ -138,6 +138,36 @@ const store = new Vuex.Store({
 })
 ```
 
+Non-reactive way with getters
+
+```JS
+const app = new Vue({
+  el: '#app',
+  store,
+  data: {
+    colors: [],
+    newColor: ''
+  },
+  methods: {
+     addColor: function() {
+      if (this.newColor != "") {
+         this.colors.push(this.newColor)
+      }
+    },
+    loadColorsFromStore: function() {
+      this.colors = this.$store.getters.colors
+    }
+  },
+  created: function() {
+    this.loadColorsFromStore()
+  }
+})
+```
+
+see import state
+
+Reactive way with getters
+
 ```JS
 const app = new Vue({
   el: '#app',
@@ -158,7 +188,6 @@ const app = new Vue({
     },
   }
 })
-```
 
 ## Mutators
 
