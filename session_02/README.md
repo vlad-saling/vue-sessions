@@ -25,7 +25,6 @@ Vue.component('color-item', {
 
 const app = new Vue({
   el: '#app',
-  store,
   data: {
     colors: ['blue', 'green', 'red'],
     newColor: ''
@@ -41,6 +40,66 @@ const app = new Vue({
 ```
 
 ## Store definition
+
+```JS
+const store = new Vuex.Store({
+  state: {
+    colors: ['blue', 'green', 'red']
+  }
+})
+```
+
+Referencing the store
+
+```JS
+const app = new Vue({
+  el: '#app',
+  store,
+  data: {
+    colors: ['blue', 'green', 'red'],
+    newColor: ''
+  },
+  methods: {
+     addColor: function() {
+      if (this.newColor != "") {
+         this.colors.push(this.newColor)
+      }
+    },
+    returnStore: function() {
+      console.log(this.$store.state.colors)
+    }
+  },
+  created: function() {
+    this.returnStore()
+  }
+})
+```
+
+Loading data from the store
+
+```JS
+const app = new Vue({
+  el: '#app',
+  store,
+  data: {
+    colors: [],
+    newColor: ''
+  },
+  methods: {
+     addColor: function() {
+      if (this.newColor != "") {
+         this.colors.push(this.newColor)
+      }
+    },
+    loadColorsFromStore: function() {
+      this.colors = this.$store.state.colors
+    }
+  },
+  created: function() {
+    this.loadColorsFromStore()
+  }
+})
+
 
 ## Getters
 
