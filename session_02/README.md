@@ -188,6 +188,7 @@ const app = new Vue({
     },
   }
 })
+```
 
 ## Mutators
 
