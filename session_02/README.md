@@ -183,6 +183,16 @@ const app = new Vue({
 })
 ```
 
+Devtools and async mutations
+
+```JS
+addColor: function(state, payload) {
+  setTimeout(() => {
+    state.colors.push(payload.color)
+  }, 1000)
+}
+```
+
 ## Actions
 
 ```JS
