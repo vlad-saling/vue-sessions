@@ -99,9 +99,44 @@ const app = new Vue({
     this.loadColorsFromStore()
   }
 })
-
+```
 
 ## Getters
+
+```JS
+const store = new Vuex.Store({
+  state: {
+    colors: ['blue', 'green', 'red']
+  },
+  getters: {
+    colors: state => {
+      return state.colors
+    }
+  }
+})
+```
+
+```JS
+const app = new Vue({
+  el: '#app',
+  store,
+  data: {
+    newColor: ''
+  },
+  computed: {
+    colors: function() {
+      return this.$store.getters.colors
+    }
+  },
+  methods: {
+     addColor: function() {
+      if (this.newColor != "") {
+         this.colors.push(this.newColor)
+      }
+    },
+  }
+})
+```
 
 ## Mutators
 
