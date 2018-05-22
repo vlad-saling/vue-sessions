@@ -225,8 +225,7 @@ const app = new Vue({
   methods: {
      addColor: function() {
       if (this.newColor != "") {
-         store.commit({
-           type: 'addColor',
+         store.commit('addColor', {
            color: this.newColor
          })
       }
