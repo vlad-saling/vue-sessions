@@ -356,3 +356,5 @@ const app = new Vue({
 })
 ```
 
+https://vuex.vuejs.org/vuex.png
+
