@@ -186,3 +186,14 @@ single file modules
 
 https://github.com/vuejs/vuex/blob/dev/examples/shopping-cart/store/modules/products.js
 
+## Scoped styles
+
+```VUE
+<style scoped lang="scss">
+.color-item {
+  & span {
+    text-decoration: underline;
+  }
+}
+</style>
+```
