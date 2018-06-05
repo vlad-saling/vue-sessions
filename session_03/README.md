@@ -62,7 +62,7 @@ const app = new Vue({
     }
   },
   methods: {
-      addColor: function () {
+    addColor: function () {
       if (this.newColor !== '') {
         store.dispatch({
           type: 'addColor',
