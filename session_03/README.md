@@ -174,5 +174,15 @@ export default new Vuex.Store({
 
 ```
 
+separate getters.js
 
+```JS
+export const colors = function (state) {
+  return state.colors
+}
+```
+
+single file modules
+
+https://github.com/vuejs/vuex/blob/dev/examples/shopping-cart/store/modules/products.js
 
