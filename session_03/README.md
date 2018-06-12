@@ -87,7 +87,7 @@ ColorItem.vue
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ColorItem',
   props: {
     color: String
   }
