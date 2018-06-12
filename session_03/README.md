@@ -89,7 +89,7 @@ ColorItem.vue
 export default {
   name: 'HelloWorld',
   props: {
-    color: ''
+    color: Array
   }
 }
 </script>
