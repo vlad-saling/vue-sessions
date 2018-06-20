@@ -224,7 +224,7 @@ const app = new Vue({
   },
   methods: {
      addColor: function() {
-      if (this.newColor != "") {
+      if (this.newColor !== '') {
          store.commit('addColor', {
            color: this.newColor
          })
@@ -283,7 +283,7 @@ const app = new Vue({
   },
   methods: {
      addColor: function() {
-      if (this.newColor != "") {
+      if (this.newColor !== '') {
          store.dispatch({
            type: 'addColor',
            color: this.newColor
@@ -345,7 +345,7 @@ const app = new Vue({
   },
   methods: {
       addColor: function() {
-      if (this.newColor != "") {
+      if (this.newColor !== '') {
           store.dispatch({
             type: 'addColor',
             color: this.newColor
